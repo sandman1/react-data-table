@@ -15,9 +15,25 @@ export default function Datatable({ data }) {
         listMessage.length > 0 ? alert(listMessage) : alert('No items were selected to download');
     }
 
-    function selectClickHandler(e) {
+    function selectClickHandler(e, item) {
         e.target.checked ? setItemsSelected(itemsSelected+1) : setItemsSelected(itemsSelected-1);
         getSelectionStatus();
+        highlightSelectedRows();
+    }
+
+    function highlightSelectedRows() {
+
+        const grid = document.getElementById("tableGrid");
+        const checkBoxes = grid.getElementsByTagName("INPUT");
+
+        for (let i = 0; i < checkBoxes.length; i++) {
+            let row = checkBoxes[i].parentNode.parentNode;
+            if (checkBoxes[i].checked) {
+                row.style.background = "#E0E0E0FF";
+            } else {
+                row.style.background = "#FFFFFF";
+            }
+        }
     }
 
     function getSelectionStatus() {
@@ -27,7 +43,6 @@ export default function Datatable({ data }) {
         for(let row of data) {
             if(row['selected'] === "true") {
                 itemsSelected++;
-                row.className = "selectedRow";
             }
             if(row['status'] === "available") {
                 itemsCanSelect++;
@@ -62,6 +77,7 @@ export default function Datatable({ data }) {
             }
         }
         getSelectionStatus();
+        highlightSelectedRows()
     }
 
     return (
@@ -70,7 +86,7 @@ export default function Datatable({ data }) {
                 <div className="tableHeaderItem"><input type="checkbox" id="selectAllCheckbox" onChange={selectAllClickHandler} /> { itemsSelected === 0 ? `None Selected` : `Selected ${itemsSelected}` }</div>
                 <div className="tableHeaderItem" onClick={downloadClickHandler}> <MdDownload /> Download Selected</div>
             </div>
-            <table cellPadding={0} cellSpacing={0}>
+            <table id="dataTable" cellPadding={0} cellSpacing={0}>
                 <thead>
                 <tr className="headerRow">
                     { data[0] && columns.map((heading) =>

@@ -25,7 +25,7 @@ tbody, tr:nth-child(odd) {
 }
 
 tr:hover {
-    background-color: #E0E0E0FF;
+    background-color: #E0E0E0FF !important;
 }
 
 .tableHeaderWrapper {
