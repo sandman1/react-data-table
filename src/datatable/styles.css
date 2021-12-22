@@ -1,0 +1,13 @@
+.dot {
+    height: 12px;
+    width: 12px;
+    background-color: #7FD233;
+    border-radius: 50%;
+    display: inline-block;
+}
+.dot-none {
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    display: inline-block;
+}

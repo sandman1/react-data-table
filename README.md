@@ -1,10 +1,10 @@
-# Getting Started with Create React App
+# Getting Started with react-data-table App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Run the following to install node modules/dependencies:
 
-## Available Scripts
+### `npm install`
 
-In the project directory, you can run:
+## Run the following to run the app:
 
 ### `npm start`
 
